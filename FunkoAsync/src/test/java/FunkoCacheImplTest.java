@@ -1,47 +1,123 @@
 import develop.models.Funko;
-import develop.services.funkos.FunkoCacheImpl;
+import develop.models.Model;
+import develop.repositories.funkos.FunkosRepository;
+import develop.services.funkos.FunkosServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FunkoCacheImplTest {
-    private FunkoCacheImpl funkoCache;
+    private FunkosRepository funkosRepository;
+    private FunkosServiceImpl funkosService;
 
     @BeforeEach
     public void setUp() {
-        funkoCache = FunkoCacheImpl.getInstance(2); // Tamaño máximo de 2 para las pruebas
+        funkosRepository = mock(FunkosRepository.class);
+        funkosService = new FunkosServiceImpl(funkosRepository);
     }
 
     @Test
-    public void testPutAndGet() {
-        Long key = 1L;
-         Funko funko = new Funko();
-         funko.setUpdatedAt(LocalDateTime.now());
+    public void testFindAll() {
+        Funko funko1 = Funko.builder()
+                .id(1)
+                .COD(UUID.fromString("UUID-1"))
+                .myId(1)
+                .name("Funko 1")
+                .model(Model.MARVEL)
+                .price(10.0)
+                .releaseData(LocalDate.now())
+                .build();
 
-        funkoCache.put(key, funko);
+        Funko funko2 = Funko.builder()
+                .id(2)
+                .COD(UUID.fromString("UUID-2"))
+                .myId(2)
+                .name("Funko 2")
+                .model(Model.DISNEY)
+                .price(15.0)
+                .releaseData(LocalDate.now())
+                .build();
 
-        Mono<Funko> retrievedFunko = funkoCache.get(key);
 
-        assertEquals(funko, retrievedFunko);
+        when(funkosRepository.findAll()).thenReturn(Flux.just(funko1, funko2));
+
+        Flux<Funko> result = funkosService.findAll();
+
+        assertNotNull(result);
+        assertEquals(2, result.collectList().block().size());
     }
 
     @Test
-    public void testRemove() {
-        Long key = 2L;
-        Funko funko = new Funko();
-        funko.setUpdatedAt(LocalDateTime.now());
+    public void testDeleteById() {
+        long funkoId = 1;
+        when(funkosRepository.deleteById(funkoId)).thenReturn(Mono.just(true));
 
-        funkoCache.put(key, funko);
+        Mono<Boolean> result = funkosService.deleteById(funkoId);
 
-        funkoCache.remove(key);
+        assertNotNull(result);
 
-        Mono<Funko> retrievedFunko = funkoCache.get(key);
+        verify(funkosRepository).deleteById(funkoId);
+    }
 
-        assertNull(retrievedFunko);
+    @Test
+    public void testFindAllByNombre() {
+        String nombre = "Funko 1";
+
+        Funko funko1 = Funko.builder()
+                .id(1)
+                .COD(UUID.fromString("UUID-1"))
+                .myId(1)
+                .name("Funko 1")
+                .model(Model.MARVEL)
+                .price(10.0)
+                .releaseData(LocalDate.now())
+                .build();
+
+        Funko funko2 = Funko.builder()
+                .id(2)
+                .COD(UUID.fromString("UUID-2"))
+                .myId(2)
+                .name("Funko 2")
+                .model(Model.DISNEY)
+                .price(15.0)
+                .releaseData(LocalDate.now())
+                .build();
+
+        when(funkosRepository.findAllByNombre(nombre)).thenReturn(Flux.just(funko1, funko2));
+
+        Flux<Funko> result = funkosService.findAllByNombre(nombre);
+
+        assertNotNull(result);
+        assertEquals(2, result.collectList().block().size());
+    }
+
+    @Test
+    public void testFindById() {
+        long funkoId = 1;
+
+        Funko funko = Funko.builder()
+                .id(1)
+                .COD(UUID.fromString("UUID-1"))
+                .myId(1)
+                .name("Funko 1")
+                .model(Model.MARVEL)
+                .price(10.0)
+                .releaseData(LocalDate.now())
+                .build();
+
+
+        when(funkosRepository.findById(funkoId)).thenReturn(Mono.just(funko));
+
+        Mono<Funko> result = funkosService.findById(funkoId);
+
+        assertNotNull(result);
+        assertTrue(result.hasElement().block());
     }
 }

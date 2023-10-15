@@ -1,50 +1,55 @@
 package develop.controller;
 
+import com.google.gson.reflect.TypeToken;
 import develop.models.Funko;
 import com.google.gson.Gson;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.rmi.server.ExportException;
 import java.util.List;
 
 public class ExportJSON {
     public static Mono<Void> exportarAJson(List<Funko> funkoList, String filename) {
-        try{
         return Mono.fromCallable(() -> {
-            Gson gson = new Gson();
-            String json = gson.toJson(funkoList);
-            Path path = Path.of(filename);
-            Files.write(path, json.getBytes());
-            return null;
+            try {
+                Gson gson = new Gson();
+                String json = gson.toJson(funkoList);
+                Path path = Path.of(filename);
+                Files.write(path, json.getBytes());
+                return null;
+            } catch (Exception e) {
+                throw new RuntimeException("Error al exportar los datos a JSON", e);
+            }
         }).subscribeOn(Schedulers.boundedElastic()).then();
-        }catch (Exception e){
-            return Mono.error(new ExportException("Error al exportar los datos a Json"));
-        }
-        //Utilizamos subscribeOn(Schedulers.elastic())
-        // para asegurarnos de que la operación se realice en un hilo de E/S separado
     }
 
-    public static Mono<List<?>> importarDesdeJson(String filename) {
-       try{
+
+    public static Mono<List<Funko>> importarDesdeJson(String filename) {
         return Mono.fromCallable(() -> {
-            Path path = Path.of(filename);
-            if (Files.exists(path)) {
-                String json = Files.readString(path);
-                Gson gson = new Gson();
-                List<Funko> funkoList = gson.fromJson(json, List.class);
-                return funkoList;
-            } else {
-                return List.of();
+            try {
+                Path path = Path.of(filename);
+                if (Files.exists(path)) {
+                    String json = Files.readString(path);
+                    Gson gson = new Gson();
+                    //TypeToken es una clase proporcionada por la biblioteca Gson en Java que se utiliza para capturar
+                    // la información de tipo en tiempo de ejecución.
+                    // Gson necesita esta información de tipo para deserializar objetos genéricos a
+                    // partir de datos JSON.
+                    Type type = new TypeToken<List<Funko>>() {}.getType();
+                    List<Funko> funkoList = gson.fromJson(json, type);
+                    return funkoList;
+                }
+                return null;  // Retorna null cuando el archivo no existe.
+            } catch (Exception e) {
+                throw new RuntimeException("Error importando el JSON", e);
             }
         }).subscribeOn(Schedulers.boundedElastic());
-       }catch (Exception e){
-           return Mono.error(new ExportException("Error importando el JSON"));
-       }
-    //Utilizamos subscribeOn(Schedulers.elastic()) para asegurarnos
-        // de que la operación se realice en un hilo de E/S separado
     }
 }
+
+//Utilizamos subscribeOn / Schedulers. para asegurarnos
+// de que la operación se realice en un hilo de E/S separado
 

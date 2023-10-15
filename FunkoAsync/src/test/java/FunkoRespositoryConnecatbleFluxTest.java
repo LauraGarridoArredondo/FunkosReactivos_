@@ -1,61 +1,91 @@
+
 import develop.models.Funko;
-import develop.services.funkos.FunkoRepositoryConnecatbleFlux;
+import develop.models.Model;
+import develop.repositories.funkos.FunkosRepository;
+import develop.services.funkos.FunkoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import java.time.LocalDate;
+import java.util.UUID;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class FunkoRepositoryConnecatbleFluxTest {
-    private FunkoRepositoryConnecatbleFlux repository;
+public class FunkoRepositoryConnectableFluxTest {
+    private FunkosRepository funkosRepository;
+    private FunkoService funkoService;
 
     @BeforeEach
     public void setUp() {
-        repository = new FunkoRepositoryConnecatbleFlux();
+        funkosRepository = mock(FunkosRepository.class);
+        funkoService = new FunkoService(funkosRepository);
     }
 
     @Test
     public void testAddAndGetAll() {
-        Funko funko = new Funko(1, "UUID-1", "Funko 1");
-        repository.add(funko);
+        // Arrange
+        var funko1 = Funko.builder()
+                .name("Funko 1")
+                .model(Model.MARVEL)
+                .price(10.0)
+                .build();
+        var funko2 = Funko.builder()
+                .name("Funko 2")
+                .model(Model.DISNEY)
+                .price(15.0)
+                .build();
+        when(funkosRepository.findAll()).thenReturn(Flux.just(funko1, funko2);
 
-        Flux<List<Funko>> allFunkosFlux = repository.getAllAsFlux();
+        // Act
+        var result = funkoService.findAll().collectList().block();
 
-        List<Funko> funkos = allFunkosFlux.blockFirst(); // Obtener el primer valor del flux
-
-        assertEquals(1, funkos.size());
-        assertEquals(funko, funkos.get(0));
+        // Assert
+        assertEquals(2, result.size());
+        assertEquals("Funko 1", result.get(0).getName());
+        assertEquals(Model.MARVEL, result.get(0).getModel());
+        assertEquals(10.0, result.get(0).getPrice());
     }
 
     @Test
     public void testAddAndDelete() {
-        Funko funko1 = new Funko(1, "UUID-1", "Funko 1");
-        Funko funko2 = new Funko(2, "UUID-2", "Funko 2");
+        // Arrange
+        var funko1 = Funko.builder()
+                .name("Funko 1")
+                .model(Model.MARVEL)
+                .price(10.0)
+                .build();
+        when(funkosRepository.addFunko(funko1)).thenReturn(Mono.just(funko1));
+        when(funkosRepository.deleteFunko(funko1.getId())).thenReturn(Mono.empty());
 
-        repository.add(funko1);
-        repository.add(funko2);
+        // Act
+        var addedFunko = funkoService.addFunko(funko1).block();
+        funkoService.deleteFunko(funko1.getId()).block();
 
-        repository.delete(1); // Eliminar funko1
+        // Assert
+        assertNotNull(addedFunko);
 
-        Flux<List<Funko>> allFunkosFlux = repository.getAllAsFlux();
-
-        List<Funko> funkos = allFunkosFlux.blockFirst();
-
-        assertEquals(1, funkos.size());
-        assertEquals(funko2, funkos.get(0));
+        // Comprueba que se ha llamado al método de eliminación del repositorio
+        verify(funkosRepository, times(1)).deleteFunko(funko1.getId());
     }
 
     @Test
     public void testNotifications() {
-        Funko funko = new Funko(1, "UUID-1", "Funko 1");
-        repository.add(funko);
+        // Arrange
+        var funko1 = Funko.builder()
+                .name("Funko 1")
+                .model(Model.MARVEL)
+                .price(10.0)
+                .build();
+        when(funkosRepository.addFunko(funko1)).thenReturn(Mono.just(funko1));
 
-        Flux<String> notifications = repository.getNotificationAsFlux();
+        // Act
+        funkoService.setNotificationHandler(funko -> {
+            assertEquals(funko1.getName(), funko.getName());
+            assertNotNull(funko.getReleaseDate());
+        });
+        funkoService.notify(funko1);
 
-        String notification = notifications.blockFirst();
-
-        assertEquals("Se ha añadido un nuevo Funko: " + funko, notification);
+        // Assert: Las notificaciones se verifican dentro del método setNotificationHandler
     }
 }

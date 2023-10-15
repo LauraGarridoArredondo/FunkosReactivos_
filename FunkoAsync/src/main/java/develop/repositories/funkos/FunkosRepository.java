@@ -10,6 +10,7 @@ public interface FunkosRepository {
 
     Flux<Funko> findAllByNombre(String nombre);
 
+
     Mono<Funko> findById(long id);
 
     Mono<Funko> save(Funko funko);
