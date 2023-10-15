@@ -7,6 +7,7 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven("https://repo.spring.io/milestone") // Agregar el repositorio de Spring Milestones
 }
 
 dependencies {
@@ -21,14 +22,15 @@ dependencies {
     implementation("io.projectreactor:reactor-core:3.5.10")
     // H2
     implementation("com.h2database:h2:2.2.224")
-    // HikaryCP para la conexion con la base de datos
-    implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation("io.r2dbc:r2dbc-h2:1.0.0.RELEASE") // Dependencia de H2 para R2DBC
     // Ibatis
     implementation("org.mybatis:mybatis:3.5.13")
     // GSON
     implementation("com.google.code.gson:gson:2.10.1")
     // Mockito
     testImplementation("org.mockito:mockito-core:5.6.0")
+    //Hikari
+    implementation("com.zaxxer:HikariCP:5.0.1")
 
 }
 
