@@ -144,25 +144,25 @@
 <h2>Clase Main</h2>
 <p>Aqui esta el main del cual se encargara de realizar las notificaciones y hacer consultas a Funkos (API)</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/e64785bb-eb72-4894-87ca-e517bd776a22)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/2562cc9c-a8c6-4981-a7bb-cfb0318c649f)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/4284b72f-de50-4e53-bd70-13dfa39832c3)
+
 <P>NOTFICACIONES:</P>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/7e38ad32-b6e5-4670-815f-a5c7b2f48f38)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/806971b7-3cef-4901-bbde-67e2b6e3f55a)
-<P>Comienzo consultas a Funkos</P>
-
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/a48bbddf-e5f5-4f8a-b3b3-02b060081884)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/0ef377f3-3194-4cbe-835b-9f7a9df3dd63)
 
 <h2>Carpeta Resources</h2>
 <p>Aqui dentro se encuentra las propiedades de la base de datos de Funkos con sus propiedades configuradas para H2 con R2DBC</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/74fa7ee6-fe43-4faf-9868-70d284606a81)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/7b0052af-7e6f-4219-b682-530b822f09c7)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/6344427d-7f9a-4efe-8f3d-bf4d8d942114)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/fe7d23ff-5911-4a86-91a4-c29e6a9c0a4d)
+
 
 <h2>Carpeta test</h2>
 <p>He aqui los test necesarios para los servicios de Funkos.</p><
 
 <h1>DEPENDENCIAS UTILIZADAS</h1>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/625e6e04-1536-4435-b3ea-b897f82159ea)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/8308e3eb-ad29-48f8-bf32-214f0b874043)
+
 
