@@ -1,10 +1,9 @@
 # FunkosReactivos_
 <h1>Hecho por Miguel Zanotto y Laura Garrido</h1>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/03b9d305-260e-4e02-a457-ab7cb7da7d68)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/eb0bc24e-0e34-40b5-9a22-9fe2f2727cf0)
 <p>Esta es la estructura de nuestro repositorio</p>
 <del>Aunque se llame el repositorio FunkosAsync es FunkoReactivos.</del>
-<del>Y la carpeta .idea de fuera de FunkoAsync fue un error subirlo.</del>
 <br>
 <h1>Carpeta Develop</h1>
 <H2>Carpeta controller</H2>
