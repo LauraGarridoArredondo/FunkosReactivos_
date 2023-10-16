@@ -6,28 +6,13 @@
 <del>Aunque se llame el repositorio FunkosAsync es FunkoReactivos.</del>
 <br>
 <h1>Carpeta Develop</h1>
-<H2>Carpeta controller</H2>
-<p>Esta carpeta contiene las clases:</p>
-<ul>
-  <li><b>CSVReader</b>
-  <p>Esta clase se encarga de leer los datos del fichero de funkos en la carpeta de data de forma reactiva con Flux y junto con las opciones getUUID (Conseguir el UUID del funko), getDate (Conseguir la fecha con el formato yyyy-MM-dd) y GetFunko en ella.</p>
-    
-  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/8f12afe4-5332-44d7-9f20-3d6e8c1dc2b0)
-  </li>
-  <li><b>ExportJSON</b>
-  <p>Esta clase se encarga de crear el fichero json de forma Reactiva con Mono de Funkos, importando y exportando el fichero JSON</p>
-  <u>Un scheduler es el que se encarga de asignar tiempo de CPU a los hilos en ejecución. </u>
-  
-  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/422568c0-317a-4f40-b2df-fc77a21d6dee)
-  </li>
-</ul>
 
-<h2>Carpeta exceptions.funko</h2>
+<h2>Carpeta exceptions / funkos</h2>
 <p>Esta carpeta contiene las excepciones de Funko para mostrar un mensaje para cada una de excepcion que se pueda dar.</p>
 <p>Hemos creado las excepciones:</p>
 
 <ul>
-<li><b>FunkoExceptio</b>
+<li><b>FunkoException</b>
 <p>Esta muestra un mensaje si hay una excepcion en la clase Funko</p>
 
 ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/8d2ea1d7-f451-4e81-9395-a8439f81ddd8)
@@ -48,6 +33,20 @@
 </li>
 </ul>
 
+<h2>Carpeta storage</h2>
+<p>Esta carpeta contiene las excepciones que se den dentro de la base de datos.</p>
+<ul>
+  <li><b>RunInvalidaException</b>
+  <p>Aqui se representa una excepcion relacionada con problemas de rutas o direcciones en la base de datos</p>
+  
+  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/09f07ac2-bee4-462a-aa05-030ed7808f32)
+  </li>
+  <li><b>StorageException</b>
+  <p>Aqui se representan excepciones relacionadas con el servicio de almacenamiento</p>
+
+  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/72f9315c-d67c-4066-b119-4b72a5df9f50)
+  </li>
+</ul>
 <h2>Carpeta Locale</h2>
 <p>Esta carpeta esta encargada de con la clase MyLocale para formatear fechas y cantidades de dinero de acuerdo con la configuración regional y el idioma de España</p>
 
@@ -57,21 +56,31 @@
 <P>Esta carpeta tiene los modelos del cual se utilizaran en los repositorios y servicios.</P>
 <ul>
   <li><b>Funko</b>
-  <p>Aqui se muestran las propiedades de Funko</p>
+  <p>Aqui se muestran las propiedades de Funko junto en como se mostraran por pantalla</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/bf4d151a-a3cc-44b3-af22-3d1d513492eb)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/8bd773fc-630e-4bfb-b4d6-5bb88cd2410c)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/cd145cbe-7c70-4d02-ab76-f081c88e4495)
+
   </li>
   
   <li><b>IdGenerator</b>
   <p>Aqui se muestra el generador de Ids de forma reactiva con Mono.</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/a553f94a-9715-4c0b-8378-f86928c701c7)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/173f8b15-e41e-472a-8e54-b4fb0d4a0bc2)
+
   </li>
   
   <li><b>Model</b>
   <p>Aqui se muestra los modelos de cada Funko como estan separados</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/407d7a8f-e618-4139-a81a-a0d468ddcb97)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/961b9799-2d74-4df1-a491-ea8aebd5a50d)
+
+  </li>
+  <li><b>Notificacion</b>
+  <p>Aqui se muestra el funcionamiento de nuestras notificaciones.</p>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/4fe16ce0-0089-48a4-883a-9dddef013f92)
+
   </li>
 </ul>
 
@@ -85,12 +94,17 @@
 </li>
 
 <li><b>Carpeta funkos</b>
-<p>Aqui se encuentra la interfaz FunkosRepositories y la clase FunkosRepositoryImpl donde se realizaran las operaciones de Crud y findByNombre,FindAllByNombre.</p>
+<p>Aqui se encuentra la interfaz FunkosRepositories y la clase FunkosRepositoryImpl donde se realizaran las operaciones de Crud y findByNombre,update y save.</p>
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/c36db428-b6ab-4235-93c6-2dbbe9128a62)
+<br>
 
- ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/bef147ee-09e9-47f3-8ab5-006f2c14dc98)
- ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/095e6682-c84b-4150-92fa-9335dd06d7ce)
- ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/71b99f5d-8918-4deb-a8fd-1f05e5814dbe)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/e58b55ee-f2b0-4f64-9f39-0464a17cd553)
+  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/fbd2b7ce-5593-46da-b52c-f910e5f0909f)
+  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/9e6a6006-4332-443d-b258-2a283d3e38f4)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/a95aed91-210f-47fc-a1c5-29aceb51a6a6)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/45e68546-3e23-4002-9c19-8e95038273b8)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/843708bd-3a6b-4e6d-95e6-bad5736e6508)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/e18cd707-0c5f-47af-996d-b81ba772f2e9)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/d35f0d6d-c460-4c85-a83c-a062136b6a92)
 
 </li>
 </ul>
@@ -100,14 +114,17 @@
 <ul>
   <li><b>Carpeta Cache</b>
   <p>Aqui se encuentra la interfaz del cache de forma reactiva</p>
-    
-  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/5a2c67a4-a627-42c6-bf7c-898bc5d51618)
+
+  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/18db7ab9-c382-4620-806e-df71ebde828b)
   </li>
 
   <li><b>Carpeta Database</b>
   <p>Aqui se encuentra la clase DataBaseManager para poder utilizar la base de datos de Funkos.</p>
 
-  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/188e9948-c756-4173-9d67-af5a48f0aa68)
+ ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/6663685d-14b3-4a33-8d1e-5998eaaa428a)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/420d7176-28ac-4386-8bf0-8f43c9d9cafc)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/369f9660-d173-4ce7-bd3b-bcf0c6fe6a71)
+
   </li>
 
   <li><b>Carpeta funkos</b>
@@ -116,52 +133,141 @@
 
   ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/4aa35a9b-5a01-4a3b-bdd7-cf3829fc6c53)
   <br>  <b>FunkoCacheImpl</b> <p>Esto se encarga de realizar los servicios de la interfaz de la cache de Funko.</p>
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/f7036c91-b27f-484e-be90-4f52c39cb54c)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/2a23d155-4696-49b8-9696-c3f12b782ac8)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/64b5f7a0-127a-45dc-af45-abde3bc2d45c)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/ad53466d-e720-4e64-a11a-ad254f551118)
 
-<br> <b>FunkoRepositoryConnectable</b> <p>Aqui se ceran las conexiones para utlizarse en las notificaciones de Funko</p>
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/cbe6b914-1b8d-490c-859d-66827b6665ad)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/4664fdd0-3c60-4a57-bade-e61aa360cb21)
 
-<br> <b>FunkoRepositoryFluxSink</b> <p>Esta clase proporciona una forma reactiva de gestionar una colección de figuras Funko, permitiendo a los clientes recibir notificaciones cuando se agregan o eliminan figuras, así como notificaciones generales.</p>
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/29ccaeaa-3632-4cff-9521-012b29e5fe5e)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/1c5d99bf-c1ce-4b23-8d9b-9bbe04e1dc3f)
+<br> <b>FunkoNotification</b> <p>Aqui se crean las interfaz para utlizarse en las notificaciones de Funko</p>
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/9cfb9fe1-00c8-4cee-a7e4-c273f12c0542)
+
+
+<br> <b>FunkoNotificactionImpl</b> <p>Esta clase proporciona una forma reactiva de gestionar una colección de figuras Funko, permitiendo a los clientes recibir notificaciones cuando se agregan o eliminan figuras, así como notificaciones generales.</p>
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/3eeb5fb3-0727-489f-b5f4-d377922080dd)
+
 
 <br> <b>FunkoService interfaz</b> <p>Esta interfaz define un conjunto de métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en Funko de forma reactiva con Mono y Flux.</p>
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/2245e15b-bedc-4518-a0e2-1a124f47043f)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/5eb210ad-d569-42d5-86bd-560def9fa51a)
 
-<br> <b>FunkoServiceImpl</b> <p>Es una implementación de la interfaz FunkosRepository que actúa como una capa de servicio para operaciones relacionadas con figuras Funko. Además, mantiene una caché de figuras Funko para mejorar el rendimiento y reducir las consultas a la fuente de datos subyacente.</p>
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/b64162c2-e2b7-4b54-9efa-0d7ba1264ba9)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/9e05763f-7d5f-464a-850e-f1114c20b736)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/5567d609-d140-45dc-88e1-93139cac593d)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/b036a8d1-bc43-45ea-9d4d-d109c15a0e70)
 
+<br> <b>FunkoServiceImpl</b> <p>Es una implementación de la interfaz FunkosRepository que actúa como una capa de servicio para operaciones relacionadas con figuras Funko y notificaciones.</p>
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/00387e34-bf10-4526-aca5-a04e14d80649)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/95facea1-851b-4807-a607-404cf5fa8221)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/801748da-4e6c-4606-baed-e2430502e2cb)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/64820516-76b6-41ba-8def-9ecbf99def94)
 
   </li>
+  <br> <b>FunkoStorage</b> <p>Esta interfaz proporciona una forma para  gestionar una colección de figuras Funko.</p>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/de383bc6-06fd-441e-8d4a-1e929b955013)
+
+
+<br> <b>FunkoService interfaz</b> <p>Esta clase se encarga tanto de las operaciones para gestionar una coleccion de funko como el de importar el csv y exportar json.</p>
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/73e79f25-f02c-4b5c-a8b8-333139c2d8eb)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/ca004414-fc9a-49fd-adef-929dec904b7d)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/12ecc70e-c9fc-4bad-b356-ac4c62820ed0)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/9125bfeb-2e95-499b-b1b7-09eb164c03d5)
+
+<br>
 </ul>
+<h2>Carpeta Storage</h2>
+
+<p>Esta carpeta esta encargada de crear un almacenamiento para cuando se exporte el JSON y importe un csv.</p>
+<b>Interfaz Storage</b>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/0e87faf6-12d6-49e8-9d62-8ce3717b53a3)
+
+<h2>Carpeta Utils</h2>
+
+<p>Esta carpeta esta encargada de crear bien los datos se cargen de la forma que queremos y el Uuid de forma para que se muestre bien a la hora de exportarlos a json</p>
+<b>LocaldateAdapter</b>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/199ffe7a-95be-49b1-9e6c-f22d1d8714a2)
+<br>
+<b>LocaldataTimeAdapter</b> 
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/393359f4-ad50-4b64-b7bd-2733dc6d1943)
+<br> <br>
+<b>UuidAdapter</b><br>
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/08140ae7-98bb-4815-8707-779f5e17ee2c)
+<br>
+<p>Como se puede ver los tres se encargan de poder leer y escribir los datos para ser exportados adecuadamente a json</p>
 
 <h2>Clase Main</h2>
 <p>Aqui esta el main del cual se encargara de realizar las notificaciones y hacer consultas a Funkos (API)</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/2562cc9c-a8c6-4981-a7bb-cfb0318c649f)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/4284b72f-de50-4e53-bd70-13dfa39832c3)
-
 <P>NOTFICACIONES:</P>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/0ef377f3-3194-4cbe-835b-9f7a9df3dd63)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/20fdd800-a062-49c8-a888-042090c20d84)
+
+<p>API</p>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/1cbba433-01c2-4dc1-948d-a54db6e1918b)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/0fabd717-3410-41ce-ba30-ef3d388dbe10)
 
 <h2>Carpeta Resources</h2>
 <p>Aqui dentro se encuentra las propiedades de la base de datos de Funkos con sus propiedades configuradas para H2 con R2DBC</p>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/6344427d-7f9a-4efe-8f3d-bf4d8d942114)
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/fe7d23ff-5911-4a86-91a4-c29e6a9c0a4d)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/d65c5fc6-da80-45fb-9eb7-c7392695c9f1)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/dd092503-f4ed-4ac3-be42-8e1c12a52987)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/667943fe-f05d-4fbc-9e35-27d7d68eecd6)
+
 
 
 <h2>Carpeta test</h2>
-<p>He aqui los test necesarios para los servicios de Funkos.</p><
+<p>He aqui los test necesarios para los servicios de Funkos.</p>
 
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/16ccbdda-3511-4f7d-9578-b7c73742601e)
+
+<h2>Carpeta develop / repositories</h2>
+<ul>
+  <li><b>FunkosRepositoryImplTest</b>
+  <p>Aqui se hacen las pruebas para comprobar que el repositorio de funkos creado se pueda realizar las operaciones dentro de ella</p>
+   
+  ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/ab080e71-9d00-4d25-b9d8-d1bd5c91fbe4)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/3cd468c0-cb14-4192-84c7-883d24167b4c)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/374c1fe8-9282-4147-85ae-87118ab6c9fa)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/5779798b-88a2-4a5c-8ab4-17462fce6567)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/715dc59e-4c4a-4587-b577-d576eb07ff9a)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/df0b207c-682c-432a-8113-c5164e847d93)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/6c3a82f7-6f65-4cc7-9056-5f77a746b96d)
+
+  </li>
+</ul>
+<h2>Carpeta develop / services </h2>
+<ul>
+  <li><b>FunkoCacheTest</b>
+  <p>Aqui se crean los test para la implementacion de cache y sus operaciones para comprobar que se hayan creado correctamente.</p>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/a56a8e9b-12a1-4859-89f2-55448bf2b3e1)
+ ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/3590cdd8-35c7-4ad9-8eab-0df0b99aae82)
+ ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/c0ce0729-550f-4d71-953d-8e8f8f99339b)
+ ![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/77d585ba-9c52-4f5a-85bf-a10da55ef206)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/8d031b59-90e4-4241-9706-564c6366c72f)
+
+  
+  </li>
+   <li><b>FunkoServiceImplTest</b>
+   <p>Aqui se encarga los test y pruebas de comprobar que las implementacions de los servicios funcionen correctamente.</p>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/db891d5a-11ac-4831-b99e-1414543895b0)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/b04a30f5-0fd6-44b4-958b-65be0ad2f7da)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/05da5cba-fe1a-427d-a598-99b2413b6765)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/a1504a93-caa9-4ded-90d0-0832acf8192b)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/eb2ad378-4076-4f50-9fcf-8334c13202ce)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/81e90da7-7be1-4f42-9db1-100e17691571)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/f94ce1ec-5986-4512-9072-8f1acf2533db)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/35a92f88-e73b-49ee-bc68-9ffc19c56993)
+
+   </li>
+   <li><b>FunkoStorageTest</b>
+   <p>En este test se comprueba si se importan los csv y exportat los json de manera correcta</p>
+
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/f13083d8-6421-49c1-8e77-2a2f5df84dd5)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/36d5ec7a-d1ef-4f7a-b27f-849ad27ca7fe)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/30e701f5-40bd-4294-977a-dcf98177e2c4)
+   </li>
+</ul>
 <h1>DEPENDENCIAS UTILIZADAS</h1>
 
-![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/8308e3eb-ad29-48f8-bf32-214f0b874043)
+![image](https://github.com/LauraGarridoArredondo/FunkosReactivos_/assets/132077920/6187a3dd-a820-4c70-9911-880d8816e200)
 
 
